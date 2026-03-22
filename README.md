@@ -34,7 +34,7 @@ CS432_Track1_Group10_A2/
     │   │   ├── components/     # React UI (AdminDashboard, MemberDashboard, Login, QRScanner)
     │   │   ├── routes/         # Express API routes
     │   │   ├── middleware/     # Auth, RBAC middleware
-    │   ├── db/
+    │   ├── sql/
     │   │   ├── seed.sql/       # Seed data (~900 rows)
     │   │   └── hostel.sql      # Schema + constraints + triggers
     │   ├── logs/
