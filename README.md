@@ -195,10 +195,12 @@ A full-stack web application for hostel administration. Implements secure HttpOn
 **Prerequisites:** Node.js v18+
 
 ```bash
-cd CS432_Track1_Group10_A2/Module_B/app
+cd Module_B/app
 
 npm install
 ```
+
+#### This step is optional. If no .env file is provided, the application may use default configuration values.
 
 Create a `.env` file (copy from `.env.example`):
 
