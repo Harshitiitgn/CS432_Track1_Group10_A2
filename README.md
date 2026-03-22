@@ -28,18 +28,27 @@ CS432_Track1_Group10_A2/
 │   └── requirements.txt
 │
 └── Module_B/                   # Hostel Management System — API, RBAC & Optimisation
-    ├── zip/
+    ├── Extras/                 # this has all images and plots that were used directly or indirectly 
+    ├── app/
     │   ├── src/
     │   │   ├── components/     # React UI (AdminDashboard, MemberDashboard, Login, QRScanner)
     │   │   ├── routes/         # Express API routes
     │   │   ├── middleware/     # Auth, RBAC middleware
-    │   │   └── db/             # SQLite database initialisation
-    │   ├── hostel.sql          # Schema + constraints + triggers
-    │   ├── seed.sql            # Seed data (~900 rows)
+    │   ├── db/
+    │   │   ├── seed.sql/       # Seed data (~900 rows)
+    │   │   └── hostel.sql      # Schema + constraints + triggers
+    │   ├── logs/
+    │   │   ├── access.log       
+    │   │   └── audit.log           # Runtime audit trail (API + DB-level)
     │   ├── server.js           # Express entry point
     │   └── package.json
     ├── logs/
+    │   ├── access.log       
     │   └── audit.log           # Runtime audit trail (API + DB-level)
+    ├── sql/
+    │   ├── seed.sql       # Seed data (~900 rows)
+    │   └── hostel.sql      # Schema + constraints + triggers
+    ├── Module_B_Report.pdf
     └── Optimisation_Implementation_Report.ipynb
 ```
 
@@ -186,7 +195,7 @@ A full-stack web application for hostel administration. Implements secure HttpOn
 **Prerequisites:** Node.js v18+
 
 ```bash
-cd CS432_Track1_Group10_A2/Module_B/zip
+cd CS432_Track1_Group10_A2/Module_B/app
 
 npm install
 ```
