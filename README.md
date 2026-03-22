@@ -49,7 +49,7 @@ CS432_Track1_Group10_A2/
     │   ├── seed.sql       # Seed data (~900 rows)
     │   └── hostel.sql      # Schema + constraints + triggers
     ├── Module_B_Report.pdf
-    └── Optimisation_Implementation_Report.ipynb
+    └── BenchmarkComparison.ipynb
 ```
 
 ---
