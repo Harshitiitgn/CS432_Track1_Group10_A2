@@ -172,7 +172,7 @@ export default function AdminDashboard({ onLogout }) {
     finally { setLoading(false); }
   }, []);
 
-  useEffect(()=>{ fetchAll(); },[fetchAll]);
+  useEffect(()=>{ fetchAll(); },[]);
 
   const handleAddMember = async () => {
     const qr = memberForm.QRCode || `QR-${Date.now()}`;

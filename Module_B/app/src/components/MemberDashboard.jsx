@@ -107,7 +107,7 @@ export default function MemberDashboard({ storedIdentificationNumber, onLogout }
     }
   }, [identificationNumber]);
 
-  useEffect(() => { fetchAll(); }, [fetchAll]);
+  useEffect(() => { fetchAll(); }, [identificationNumber]);
 
   const handleNewComplaint = async () => {
     try {

@@ -432,6 +432,95 @@ INSERT INTO Allocation (IdentificationNumber, RoomID, CheckInDate, CheckOutDate,
 ('2020120', 54, '2023-11-01', NULL, 'Active');
 
 -- ==========================================
+-- 5.1 UPDATE ROOM OCCUPANCY TO MATCH ALLOCATIONS
+-- ==========================================
+-- Updating CurrentOccupancy to reflect actual active allocations
+-- Generated automatically to sync Room and Allocation tables
+UPDATE Room SET CurrentOccupancy = 0 WHERE RoomID NOT IN (SELECT DISTINCT RoomID FROM Allocation WHERE AllocationStatus = 'Active');
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 1;
+UPDATE Room SET CurrentOccupancy = 3 WHERE RoomID = 2;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 3;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 5;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 8;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 9;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 10;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 12;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 14;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 15;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 16;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 19;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 20;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 22;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 23;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 24;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 27;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 28;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 29;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 30;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 31;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 32;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 33;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 35;
+UPDATE Room SET CurrentOccupancy = 3 WHERE RoomID = 39;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 40;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 41;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 43;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 44;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 46;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 47;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 48;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 49;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 50;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 54;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 55;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 56;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 57;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 58;
+UPDATE Room SET CurrentOccupancy = 3 WHERE RoomID = 59;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 60;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 65;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 67;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 68;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 69;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 70;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 73;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 75;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 78;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 79;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 82;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 83;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 84;
+UPDATE Room SET CurrentOccupancy = 3 WHERE RoomID = 86;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 87;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 88;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 91;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 93;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 94;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 97;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 99;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 100;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 101;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 102;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 103;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 104;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 105;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 106;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 107;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 110;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 112;
+UPDATE Room SET CurrentOccupancy = 2 WHERE RoomID = 114;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 115;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 116;
+UPDATE Room SET CurrentOccupancy = 1 WHERE RoomID = 119;
+
+-- ==========================================
+-- 5.2 UPDATE ROOM STATUS TO MATCH OCCUPANCY
+-- ==========================================
+-- Rooms with occupancy = 0 should be Available, > 0 should be Occupied
+UPDATE Room SET RoomStatus = 'Available' WHERE CurrentOccupancy = 0;
+UPDATE Room SET RoomStatus = 'Occupied' WHERE CurrentOccupancy > 0;
+
+-- ==========================================
 -- 6. FURNITURE TYPES
 -- ==========================================
 INSERT INTO FurnitureType (TypeName, Description) VALUES
